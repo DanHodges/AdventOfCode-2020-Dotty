@@ -6,7 +6,7 @@ trait Day:
   self =>
   def aintGottaDolla = self.getClass.getSimpleName.split("\\$").last
   def input:String = Source.fromResource(s"$aintGottaDolla.txt").mkString
-  def lines(s:String = input):Seq[String] = Source.fromString(s).getLines().toSeq
+  def lines(s:String = input):Seq[String] = Source.fromString(s).getLines().toSeq.filterNot(_.isEmpty)
   
   def inputLines = lines(input)
 

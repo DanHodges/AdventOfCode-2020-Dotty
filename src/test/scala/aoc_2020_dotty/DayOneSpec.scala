@@ -1,7 +1,6 @@
 package aoc_2020_dotty
 
-import aoc_2020_dotty.DayOne._
-import .DayOne
+import DayOne._
 import org.junit.Assert._
 import org.junit.Test
 

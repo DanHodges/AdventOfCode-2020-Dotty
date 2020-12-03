@@ -1,7 +1,6 @@
 package aoc_2020_dotty
 
-import aoc_2020_dotty.DayTwo._
-import .DayOne
+import DayTwo._
 import org.junit.Assert._
 import org.junit.Test
 import scala.language.implicitConversions
