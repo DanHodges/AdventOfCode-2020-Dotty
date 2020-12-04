@@ -6,6 +6,7 @@ object Main:
     DayOne.print
     DayTwo.print
     DayThree.print
+    DayFour.print
 
   
 
