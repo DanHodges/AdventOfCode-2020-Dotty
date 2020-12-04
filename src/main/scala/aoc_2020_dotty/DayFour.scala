@@ -1,7 +1,6 @@
 package aoc_2020_dotty
 
 object DayFour extends Day:
-  
   def data(input: String): Seq[Map[String, String]] =
     input.split("\\n\\n").toSeq.filterNot(_.isEmpty)
       .map(_.split("\\s+")
@@ -22,16 +21,15 @@ object DayFour extends Day:
     def validIyr:Boolean = iyr.intCheck(_.isWithin(2010, 2020))
     def validEyr:Boolean = eyr.intCheck(_.isWithin(2020, 2030))
     
-    def validHgt:Boolean = (hgt.dropRight(2), hgt.takeRight(2)) match {
+    def validHgt:Boolean = (hgt.dropRight(2), hgt.takeRight(2)) match
       case (height, "cm") => height.intCheck(_.isWithin(150, 193))
       case (height, "in") => height.intCheck(_.isWithin(59, 76))
       case _ => false
-    }
     
-    def validHcl:Boolean = hcl.toList match {
+    def validHcl:Boolean = hcl.toList match
       case head :: tail if tail.size == 6 && head == '#' => tail.toSet.subsetOf("0123456789abcdef".toSet)
       case _ => false
-    }
+    
     
     def validEcl = Set("amb", "blu", "brn","gry","grn","hzl","oth").contains(ecl)
     def validPid = pid.size == 9 && pid.intCheck(x => true)
@@ -41,8 +39,7 @@ object DayFour extends Day:
   
   object Passport:
     def apply(m: Map[String, String]): Option[Passport] =
-      try {
-        Some(new Passport(
+      try Some(new Passport(
           byr = m("byr"),
           iyr = m("iyr"),
           eyr = m("eyr"),
@@ -52,7 +49,7 @@ object DayFour extends Day:
           pid = m("pid"),
           cid = m.get("cid"),
         ))
-      } catch { case e: Exception => None } 
+      catch case e: Exception => None
       
   implicit class RichInt(val i: Int):
     def isWithin(a: Int, b: Int) = i >= a && i <= b
@@ -62,7 +59,7 @@ object DayFour extends Day:
       try 
         val int = Integer.parseInt(s)
         condition(int)
-      catch { case e: Exception => false }
+      catch case e: Exception => false
     
       
   def partOne(s: String):Int =
